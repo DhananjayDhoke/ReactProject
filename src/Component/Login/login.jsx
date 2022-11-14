@@ -12,8 +12,10 @@ import {
     }
     from 'mdb-react-ui-kit';
 import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { dologin } from '../Auth/logininfo';
+import { CheckedLogin } from '../Redux/Action';
 import "./login.css"
 
 export const Login = ()=>{
@@ -23,6 +25,9 @@ export const Login = ()=>{
         password: ""
     })
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  
+
 
     const loginHandelChange = (e)=>{
         setLoginData({
@@ -37,9 +42,9 @@ export const Login = ()=>{
         }else{
           axios.post("https://uatservice.fodxpert.com/auth/local/",loginData).then((res)=>{
           
-           dologin(res.data.jwt,()=>{
-
-               navigate("/profile")
+           dologin(res.data,()=>{
+            dispatch(CheckedLogin())
+               navigate("/user/profile")
            })
 
           }).catch(e=>{

@@ -26,7 +26,7 @@ export const dologout = ()=>{
 
 
 export const getCurrentUser = ()=>{
-    if(isLogin){
+    if(isLogin()){
         return JSON.parse(localStorage.getItem("data"))
     }
     else{

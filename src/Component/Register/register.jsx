@@ -37,7 +37,7 @@ export const Register = ()=>{
      })
     }
     const handleSubmit = ()=>{
-        axios.post("https://uatservice.fodxpert.com/auth/local/register",registerData).then((res)=>{
+        axios.post("https://uatapi.fodxpert.com/api/memberRegistration/",registerData).then((res)=>{
               alert("User register sucsesfully");
               setRegisterData({
                 party_package_type:"",
@@ -89,7 +89,7 @@ export const Register = ()=>{
                   </div>
 
                   <div className="d-flex flex-row align-items-center mb-4 ">
-                    <MDBIcon fas icon="user me-3" size='lg'/>
+                    <MDBIcon fas icon="fas fa-mobile-alt me-3" size='lg'/>
                     <MDBInput label='Your Phone Number' id='phone_number' type='number' onChange={handleChange} className='w-100'/>
                   </div>
                     
@@ -99,12 +99,12 @@ export const Register = ()=>{
                   </div>
                     
                   <div className="d-flex flex-row align-items-center mb-4 ">
-                    <MDBIcon fas icon="user me-3" size='lg'/>
+                    <MDBIcon fas icon="fas fa-globe-americas me-3" size='lg'/>
                     <MDBInput label='Country' id='country' type='text' onChange={handleChange} className='w-100'/>
                   </div>
                   
                   <div className="d-flex flex-row align-items-center mb-4 ">
-                    <MDBIcon fas icon="user me-3" size='lg'/>
+                    <MDBIcon fas icon="far fa-flag me-3" size='lg'/>
                     <MDBInput label='State' id='state' type='text' onChange={handleChange} className='w-100'/>
                   </div>
 

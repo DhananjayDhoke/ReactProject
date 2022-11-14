@@ -14,11 +14,11 @@ export const Profile = () => {
        
         console.log(token)
         const config = {
-            headers: { Authorization: `Bearer ${token}` },
+            headers: { Authorization: `Bearer ${token.jwt}` },
           };
           axios.get("https://uatservice.fodxpert.com/users/me",config).then((res)=>{
            console.log(res.data)
-           //setProfileData(res.data);
+           setProfileData(res.data);
           // console.log(profileData);
           }).catch(e=>{
            console.log(e)
@@ -35,7 +35,7 @@ export const Profile = () => {
                       style={{ borderTopLeftRadius: '.5rem', borderBottomLeftRadius: '.5rem' }}>
                       <MDBCardImage src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava1-bg.webp"
                         alt="Avatar" className="my-5" style={{ width: '80px' }} fluid />
-                      <MDBTypography tag="h5">Marie Horwitz</MDBTypography>
+                      <MDBTypography tag="h5">{profileData.name}</MDBTypography>
                       <MDBCardText>Web Designer</MDBCardText>
                       <MDBIcon far icon="edit mb-5" />
                     </MDBCol>
@@ -46,7 +46,7 @@ export const Profile = () => {
                         <MDBRow className="pt-1">
                           <MDBCol size="6" className="mb-3">
                             <MDBTypography tag="h6">Email</MDBTypography>
-                            <MDBCardText className="text-muted">info@example.com</MDBCardText>
+                            <MDBCardText className="text-muted">{profileData.email}</MDBCardText>
                           </MDBCol>
                           <MDBCol size="6" className="mb-3">
                             <MDBTypography tag="h6">Phone</MDBTypography>
@@ -58,13 +58,13 @@ export const Profile = () => {
                         <hr className="mt-0 mb-4" />
                         <MDBRow className="pt-1">
                           <MDBCol size="6" className="mb-3">
-                            <MDBTypography tag="h6">Email</MDBTypography>
-                            <MDBCardText className="text-muted">info@example.com</MDBCardText>
+                            <MDBTypography tag="h6">Username</MDBTypography>
+                            <MDBCardText className="text-muted">{profileData.username}</MDBCardText>
                           </MDBCol>
-                          <MDBCol size="6" className="mb-3">
+                          {/* <MDBCol size="6" className="mb-3">
                             <MDBTypography tag="h6">Phone</MDBTypography>
                             <MDBCardText className="text-muted">123 456 789</MDBCardText>
-                          </MDBCol>
+                          </MDBCol> */}
                         </MDBRow>
     
                         <div className="d-flex justify-content-start">
